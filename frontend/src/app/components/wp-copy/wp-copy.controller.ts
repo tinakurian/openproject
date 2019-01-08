@@ -32,12 +32,15 @@ import {WorkPackageChangeset} from 'core-components/wp-edit-form/work-package-ch
 import {WorkPackageCreateController} from 'core-components/wp-new/wp-create.controller';
 import {WorkPackageRelationsService} from "core-components/wp-relations/wp-relations.service";
 import {untilComponentDestroyed} from "ng2-rx-componentdestroyed";
+import {WorkPackageEditingService} from "core-components/wp-edit-form/work-package-editing-service";
+import {IWorkPackageEditingServiceToken} from "core-components/wp-edit-form/work-package-editing.service.interface";
 
 export class WorkPackageCopyController extends WorkPackageCreateController {
   private __initialized_at:Number;
   private copiedWorkPackageId:string;
 
   private wpRelations:WorkPackageRelationsService = this.injector.get(WorkPackageRelationsService);
+  protected wpEditing:WorkPackageEditingService = this.injector.get<WorkPackageEditingService>(IWorkPackageEditingServiceToken);
 
   ngOnInit() {
     super.ngOnInit();
